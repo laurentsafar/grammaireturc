@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<br>
+<div>
+    {{ form_start(form) }}
+        <div class="row">
+            <div class="col-5">
+                {{ form_row(form.turc,{'label': 'Mot turc'}) }}
+            </div>
+            <div class="col-5">
+                {{ form_row(form.francais,{'label': 'Mot francais'}) }}        
+            </div>
+            <div class="col-2" style ="margin-top:1.5rem">
+                {{ form_row(form.adjectif,{'label': 'Adjectif ?'}) }}     
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-end">
+            <div class="col-3">
+                {{ form_rest(form) }}     
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+</div>
+<br>
+<br>
+<div >
+    <h6 class="text-primary">Liste des mots</h6>
+    <table class ="table table-bordered">
+        <thead>
+            <th>Turc</th>
+            <th>Français</th>
+            <th>Adjectif (s au pluriel)</th>
+            <th></th>
+        </thead>
+        <tbody>    
+            {% for mot in mots %}
+                <tr>
+                    <td>{{mot.turc|capitalize}}</td>
+                    <td>{{mot.francais|capitalize}}</td>
+                    <td>{% if mot.adjectif ==1 %}Oui{% endif %}</td>
+                    <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal" data-id="{{mot.id}}" data-mot="{{mot.turc}}">Supprimer</button></td>
+
+                </tr>  
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Supprimer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <a class="btn btn-danger" id="btnsupprimer" href ="">Supprimer</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var id = button.data('id')
+  var mot = button.data('mot') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('Supression de  ' + mot);
+  modal.find('.modal-body').text('Es tu certain de vouloir supprimer   ' + mot +'?');
+  var pathname = window.location.pathname; // Returns path only (/path/example.html)
+  modal.find('#btnsupprimer').attr("href",pathname+'/supprmot/'+id);
+})
+
+function suppr(){
+  var id = $('.modal-body input').val();
+  return id;
+
+  
+}
+</script>
+
+
+
+
+{% endblock %}

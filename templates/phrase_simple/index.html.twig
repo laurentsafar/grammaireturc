@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br>
+    <p>Le but de ce jeu est de s'entrainer à faire des phrases toutes simples et quotidiennes. </p>
+    <p>Le module actuel permet de s'entrainer à travailler les actions comportant le verbe être</p>
+    <p>Paramètre la partie que tu veux faire. Pour cela choisi de travailler l'ensemble des cas, ou peut être seulement un type de phrase, de temps ou de personne.</p>
+
+    {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4" style="margin-bottom: 1rem;">
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title">Temps</h5>
+                        <br>
+                        <div style="margin-left:15%">
+                            {{ form_row(form.passe) }}
+                            {{ form_row(form.present) }}
+                            {{ form_row(form.futur) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-12  col-lg-4" style="margin-bottom: 1rem;">
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title">Type</h5>
+                        <br>
+                        <div style="margin-left:15%">
+                            {{ form_row(form.affirmation) }}
+                            {{ form_row(form.negation) }}
+                            {{ form_row(form.question) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-12  col-lg-4" style="margin-bottom: 1rem;">
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title">Personne</h5>
+                        <br>
+                        <div style="margin-left:15%">
+                            {{ form_row(form.je) }}
+                            {{ form_row(form.tu) }}
+                            {{ form_row(form.il) }}
+                            {{ form_row(form.nous) }}
+                            {{ form_row(form.vous) }}
+                            {{ form_row(form.ils) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style ="float:right">
+            {{ form_rest(form) }}
+        </div>
+            {{ form_end(form) }}
+        
+    
+
+{% endblock %}

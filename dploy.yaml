@@ -1,0 +1,8 @@
+deploy_test:
+    host: "ftp.cluster026.hosting.ovh.net"
+    user: "wlsfrjbcfp"
+    pass: "Ovh72cloud13"
+    path:
+        local: "/"
+        remote: "/www/grammaireturc"
+    exclude: ["dploy.yaml"]

@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<br>
+    <div class="row justify-content-around">
+        <div class="col-12  col-lg-6">
+            <div class="card" style ="margin-bottom:1rem">
+                 <div class="card-body">
+                    <div class="row">
+                        <h5 class ="text-primary">Participants</h5>
+                        <br>
+                        <div style="margin-left:5%">
+                            {{ form_start(form) }}
+                                <div class="row">
+                                    <div class="col 6">
+                                        {{ form_row(form.name,{'label': 'Ajouter un participant'}) }}
+                                    </div>
+                                    <div class="col-4" style="margin-top:1.5rem">
+                                        {{ form_rest(form) }}
+                                    </div>
+                                </div>
+                            {{ form_end(form) }}
+                        </div>   
+                    </div>
+                    <br>
+                    <div class="row">
+                        <table class="table">
+                            <thead>
+                                <th>Joueurs</th>
+                                <th>Score</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                {% for joueur in joueurs %}
+                                    <tr>
+                                        <td class="text-info">{{joueur.name|upper}}</td>
+                                        <td>{{joueur.score}}</td>
+                                        <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal" data-id="{{joueur.id}}" data-nom="{{joueur.name}}">Supprimer</button></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="col-12  col-lg-4">
+            <div class="row justify-content-around">
+             <br>
+                <div class="card" style="95%">
+                    <div class="card-body">
+                    <h5 class ="text-primary">La partie</h5>
+                        <br>
+                        <ul>
+                            <li>Numéro de partie : {{partie.id}}</li>
+                            <li>Date de la partie : {{partie.date|date('d-m-Y')}}</li>
+                            <li>Nombre de joueurs : {{partie.nbrjoueurs}}</li>
+                        </ul>
+                    </div>  
+                </div>
+            </div><br><br>
+
+            <div class="right">
+                {%if partie.nbrjoueurs>0%}<a class="btn btn-success" href ={{ path('jouerinit', {id: partie.id}) }}>Démarrer</a>{%endif%}
+
+            </div>
+        </div>
+    </div>
+    <br>
+    
+        <div class="card alert alert-light" >
+            <div class="card-body">
+            <h5 class ="text-primary" style ="margin-left:1rem">Paramètres de la partie</h5>
+                        <br>
+            <div class="row justify-content-around">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <h6 class="text-primary">Temps</h6>
+                    <ul>
+                        <li>Passé :  {%if partie.passe ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Présent : {%if partie.present ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Futur : {%if partie.futur ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <h6 class="text-primary">Type de phrase</h6>
+                    <ul>
+                        <li>Affirmation :  {%if partie.affirmation ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Question : {%if partie.question ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Négation : {%if partie.negation ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+                    <h6 class="text-primary">Personne</h6>
+                    <ul>
+                        <li>Je : {%if partie.je ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Tu : {%if partie.tu ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Il/Elle : {%if partie.il ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Nous : {%if partie.nous ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Vous : {%if partie.vous ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                        <li>Ils/Elles : {%if partie.ils ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
+                    </ul>
+                </div>   
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Supprimer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <a class="btn btn-danger" id="btnsupprimer" href ="">Supprimer</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var id = button.data('id')
+  var nom = button.data('nom') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('Supression de  ' + nom);
+  modal.find('.modal-body').text('Es tu certain de vouloir supprimer   ' + nom +'?');
+  var pathname = window.location.pathname; // Returns path only (/path/example.html)
+  modal.find('#btnsupprimer').attr("href",pathname+'/supprjoueur/'+id);
+})
+
+function suppr(){
+  var id = $('.modal-body input').val();
+  return id;
+
+  
+}
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<br>
+<div class="row justify-content-around">
+    
+    <div class="col-12 col-lg-9">
+        <h4 class="alert alert-info" >A {{joueur.name|capitalize}} de jouer !</h4>
+        <br>
+        <br>
+        <h2 class = "text-secondary" style="text-align:center">{{phrase|capitalize}}</h2>
+        <br>
+        <div id = "btnaide" style="float:right">
+            <button  type="button" class="btn btn-link"  onclick="aide()">Aide</button>
+        </div>
+        <div id="aide" style='display:none'>
+        <h3  class="text-primary" style="text-align:right">{{aide|capitalize}} </h3>
+        </div>
+        <br>
+        <br>
+        
+        <div id = "btnreponse" >
+            <div class="row justify-content-center">
+                <div class="col-2">
+                    <button  type="button" class="btn btn-success"  onclick="reponse()">Reponse</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="reponse" style='display:none'>
+            <h2  class="text-success" style="text-align:center">{{traduction|capitalize}} </h2>
+            <br>
+            <br>
+            <div class="row justify-content-between">
+                <div class="col-6">
+                    {%if partie.nbrjoueurs>0%}<a class="btn btn-success" href ={{ path('jeu', {id: partie.id,test:1}) }}>Je savais</a>{%endif%}
+                </div>
+                <div class="col-3">
+                    {%if partie.nbrjoueurs>0%}<a class="btn btn-danger" href ={{ path('jeu', {id: partie.id,test:0}) }}>Je ne savais pas</a>{%endif%}
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="col-12 col-lg-3">
+        <div class="card alert alert-secondary" >
+            <div class="card-body">
+                <h6 class="text-danger">Tour : {{partie.tour}}</h6>
+                <br>
+                <table>
+                    {% for resultat in resultats %}
+                        {% if resultat == joueur %}
+                        <tr class = "text-primary">
+                        {% else %}
+                        <tr >   
+                        {% endif %} 
+                            <td>{{resultat.name|upper}} : {{resultat.score}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+function aide(){
+    var btn = document.getElementById('btnaide');
+    var aide = document.getElementById('aide');
+    btn.style.display="none";
+    aide.style.display="block";
+}
+function reponse(){
+    var btn = document.getElementById('btnreponse');
+    var aide = document.getElementById('reponse');
+    btn.style.display="none";
+    aide.style.display="block";
+}
+</script>
+{% endblock %}
