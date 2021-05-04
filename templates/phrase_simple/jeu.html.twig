@@ -7,7 +7,7 @@
 <div class="row justify-content-around">
     
     <div class="col-12 col-lg-9">
-        <h4 class="alert alert-info" >A {{joueur.name|capitalize}} de jouer !</h4>
+        <h4 class="alert " style="background-color:#4a6da7;color:#fff">A {{joueur.name|capitalize}} de jouer !</h4>
         <br>
         <br>
         <h2 class = "text-secondary" style="text-align:center">{{phrase|capitalize}}</h2>
@@ -23,38 +23,38 @@
         
         <div id = "btnreponse" >
             <div class="row justify-content-center">
-                <div class="col-2">
-                    <button  type="button" class="btn btn-success"  onclick="reponse()">Reponse</button>
+                <div class="col-4" style="width:auto">
+                    <button  type="button" class="btn" style="background-color:#4a6da7;color:#fff"  onclick="reponse()">Reponse</button>
                 </div>
             </div>
         </div>
         <br>
         <div id="reponse" style='display:none'>
-            <h2  class="text-success" style="text-align:center">{{traduction|capitalize}} </h2>
+            <h2  class="" style="text-align:center;color:#4a6da7">{{traduction|capitalize}} </h2>
             <br>
             <br>
             <div class="row justify-content-between">
-                <div class="col-6">
-                    {%if partie.nbrjoueurs>0%}<a class="btn btn-success" href ={{ path('jeu', {id: partie.id,test:1}) }}>Je savais</a>{%endif%}
+                <div class="col-4 col-lg-4 col-md-4 col-sm-4">
+                    {%if partie.nbrjoueurs>0%}<a class="btn btn-outline-success" href ={{ path('jeu', {id: partie.id,test:1}) }}>Je savais</a>{%endif%}
                 </div>
-                <div class="col-3">
-                    {%if partie.nbrjoueurs>0%}<a class="btn btn-danger" href ={{ path('jeu', {id: partie.id,test:0}) }}>Je ne savais pas</a>{%endif%}
+                <div class="col-6 col-lg-3 col-md-3 col-sm-4">
+                    {%if partie.nbrjoueurs>0%}<a class="btn btn-outline-danger" href ={{ path('jeu', {id: partie.id,test:0}) }}>Je ne savais pas</a>{%endif%}
                 </div>
             </div>
         </div>
         <br>
     </div>
     <div class="col-12 col-lg-3">
-        <div class="card alert alert-secondary" >
+        <div class="card alert " style="background-color:#4a6da7">
             <div class="card-body">
-                <h6 class="text-danger">Tour : {{partie.tour}}</h6>
+                <h6 class="" style="color:#fff">Tour : {{partie.tour}}</h6>
                 <br>
                 <table>
                     {% for resultat in resultats %}
                         {% if resultat == joueur %}
-                        <tr class = "text-primary">
+                        <tr class = "text-warning">
                         {% else %}
-                        <tr >   
+                        <tr style="color:#fff">   
                         {% endif %} 
                             <td>{{resultat.name|upper}} : {{resultat.score}}</td>
                         </tr>

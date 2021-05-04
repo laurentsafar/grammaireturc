@@ -8,7 +8,7 @@
             <div class="card" style ="margin-bottom:1rem">
                  <div class="card-body">
                     <div class="row">
-                        <h5 class ="text-primary">Participants</h5>
+                        <h5 style="color:#4a6da7">Participants</h5>
                         <br>
                         <div style="margin-left:5%">
                             {{ form_start(form) }}
@@ -34,7 +34,7 @@
                             <tbody>
                                 {% for joueur in joueurs %}
                                     <tr>
-                                        <td class="text-info">{{joueur.name|upper}}</td>
+                                        <td class="" style="color:#4a6da7">{{joueur.name|upper}}</td>
                                         <td>{{joueur.score}}</td>
                                         <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal" data-id="{{joueur.id}}" data-nom="{{joueur.name}}">Supprimer</button></td>
                                     </tr>
@@ -51,7 +51,7 @@
              <br>
                 <div class="card" style="95%">
                     <div class="card-body">
-                    <h5 class ="text-primary">La partie</h5>
+                    <h5 class ="" style="color:#4a6da7">La partie</h5>
                         <br>
                         <ul>
                             <li>Numéro de partie : {{partie.id}}</li>
@@ -62,8 +62,8 @@
                 </div>
             </div><br><br>
 
-            <div class="right">
-                {%if partie.nbrjoueurs>0%}<a class="btn btn-success" href ={{ path('jouerinit', {id: partie.id}) }}>Démarrer</a>{%endif%}
+            <div class="right" >
+                {%if partie.nbrjoueurs>0%}<a class="btn btn-success" style="float:right" href ={{ path('jouerinit', {id: partie.id}) }}>Démarrer</a>{%endif%}
 
             </div>
         </div>
@@ -72,11 +72,11 @@
     
         <div class="card alert alert-light" >
             <div class="card-body">
-            <h5 class ="text-primary" style ="margin-left:1rem">Paramètres de la partie</h5>
+            <h5 class ="" style="color:#4a6da7" style ="margin-left:1rem">Paramètres de la partie</h5>
                         <br>
             <div class="row justify-content-around">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                    <h6 class="text-primary">Temps</h6>
+                    <h6 class="" style="color:#4a6da7">Temps</h6>
                     <ul>
                         <li>Passé :  {%if partie.passe ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
                         <li>Présent : {%if partie.present ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
@@ -84,7 +84,7 @@
                     </ul>
                 </div>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                    <h6 class="text-primary">Type de phrase</h6>
+                    <h6 class="" style="color:#4a6da7">Type de phrase</h6>
                     <ul>
                         <li>Affirmation :  {%if partie.affirmation ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
                         <li>Question : {%if partie.question ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
@@ -92,7 +92,7 @@
                     </ul>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
-                    <h6 class="text-primary">Personne</h6>
+                    <h6 class="" style="color:#4a6da7">Personne</h6>
                     <ul>
                         <li>Je : {%if partie.je ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
                         <li>Tu : {%if partie.tu ==1%}<i class="fa fa-check text-success"></i></ion-icon>{%else%}<i class="fa fa-times text-danger"></i>{%endif%}</li>
