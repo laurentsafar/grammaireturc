@@ -16,9 +16,8 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
-    <div class="container">
-    <body>
     
+    <body>
         <nav class="navbar navbar-expand-lg navbar-dark  justify-content-between" style="background-color: #292929;">
             <a class="navbar-brand" style ="margin-left:1rem" href="{{ path('accueil') }}">Phrases simples</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,9 +41,15 @@
             </div>
         </nav>
     
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>      
+    
+            <div class="footer" style="background-color: #292929;">
+                <p style = "text-align:center;color:#fff">&copy; 2021 - Réalisé par Laurent SAFAR. </p> 
+                <p style = "text-align:center;color:#fff">Autre site du développeur : <a href="https:///www.dicotheo.ovh">www.dicotheo.ovh</a>  </p>  
+            </div>
 
-        {% block body %}{% endblock %}
-       
-    </body>
-    </div>
+</body>   
+     
 </html>

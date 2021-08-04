@@ -5,14 +5,14 @@
 <br>
 <div>
     {{ form_start(form) }}
-        <div class="row">
-            <div class="col-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-5">
                 {{ form_row(form.turc,{'label': 'Mot turc'}) }}
             </div>
-            <div class="col-5">
+            <div class="col-12 col-lg-5 ">
                 {{ form_row(form.francais,{'label': 'Mot francais'}) }}        
             </div>
-            <div class="col-2" style ="margin-top:1.5rem">
+            <div class="col-12 col-lg-2 " style ="margin-top:1.5rem">
                 {{ form_row(form.adjectif,{'label': 'Adjectif ?'}) }}     
             </div>
         </div>

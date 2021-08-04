@@ -1,11 +1,19 @@
 body {
-    background-color:white;
+    background-color:#E6E5E3;
+    margin:O;
+    min-height: 100vh;
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+    
 }
 
-.container { margin: 1em auto; 
-    max-width: 80%;  
+.container { 
+    width: 98%;  
     font-size: 1em;
     font-family: arial; 
+    background-color: #fff;
+    color :#292929;
+    
 }
 
 .container code { 
@@ -30,6 +38,20 @@ body {
 .text-primary{
     color: #4a6da7;
 }
+
+.nav-link{
+margin : 1rem;
+}
+
+.navbar-toggler{
+    margin :1rem;
+}
+
+@media screen and (max-width: 640px)  {
+    .container {
+      width: 100%;
+    }
+  }
 
 
 

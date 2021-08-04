@@ -24,7 +24,7 @@
         <div id = "btnreponse" >
             <div class="row justify-content-center">
                 <div class="col-4" style="width:auto">
-                    <button  type="button" class="btn" style="background-color:#4a6da7;color:#fff"  onclick="reponse()">Reponse</button>
+                    <button  type="button" class="btn" style="background-color:#4a6da7;color:#fff"  onclick="reponse()">Réponse</button>
                 </div>
             </div>
         </div>
@@ -45,16 +45,16 @@
         <br>
     </div>
     <div class="col-12 col-lg-3">
-        <div class="card alert " style="background-color:#4a6da7">
+        <div class="card " style="border:solid 4px #4a6da7">
             <div class="card-body">
-                <h6 class="" style="color:#fff">Tour : {{partie.tour}}</h6>
+                <h6 class="" style="color:#4a6da7">Tour : {{partie.tour}}</h6>
                 <br>
                 <table>
                     {% for resultat in resultats %}
                         {% if resultat == joueur %}
-                        <tr class = "text-warning">
+                        <tr class = "" style="color:#E36501">
                         {% else %}
-                        <tr style="color:#fff">   
+                        <tr >   
                         {% endif %} 
                             <td>{{resultat.name|upper}} : {{resultat.score}}</td>
                         </tr>
@@ -62,6 +62,7 @@
                 </table>
             </div>
         </div>
+        <br>
     </div>
 </div>
 

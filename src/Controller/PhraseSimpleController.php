@@ -229,10 +229,10 @@ class PhraseSimpleController extends AbstractController
         $lasttemps = $partie->getLasttemps();
         $temps =[];
         if($partie->getPasse()==true){
-            array_push($temps,0);
+            array_push($temps,1);
         }
         if($partie->getPresent()==true){
-            array_push($temps,1);
+            array_push($temps,0);
         }
         if($partie->getFutur()==true){
             array_push($temps,2);
@@ -579,7 +579,7 @@ class PhraseSimpleController extends AbstractController
               $traduction = $traduction. " m".$voyelle."s".$voyelle."n".$voyelle."z ?";
               break;
             case 6:
-              $traduction = $traduction."ler". " m".$voyelle ." ?";
+              $traduction = $traduction."l".$pvoyelle."r". " m".$voyelle ." ?";
               break;
           }
           break;
